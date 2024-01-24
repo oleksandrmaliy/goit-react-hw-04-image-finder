@@ -13,9 +13,8 @@ export class App extends Component {
   
   return (
     <div>
-      React homework template <br/>
-      ccchahahahahahahahahaha
-      <Searchbar>1</Searchbar>
+      React homework template
+      <Searchbar></Searchbar>
       {/* <ImageGallery>2</ImageGallery>
       <ImageGalleryItem>3</ImageGalleryItem>
       <Loader>4</Loader>

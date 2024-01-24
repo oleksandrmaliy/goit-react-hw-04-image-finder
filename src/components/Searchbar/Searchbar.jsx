@@ -9,7 +9,7 @@ import React, {Component} from "react";
 //   number: yup.number().min(1000000).max(9999999).integer().required(),
 // })
 
-
+import styles from "./Searchbar.module.css";
 
 
 
@@ -23,14 +23,14 @@ class Searchbar extends Component {
     render(){
         // const { name, number } = this.state;
     return (
-<header class="searchbar">
-  <form class="form">
-    <button type="submit" class="button">
-      <span class="button-label">Search</span>
+<header className={styles.Searchbar}>
+  <form className={styles.SearchForm}>
+    <button type="submit" className={styles.SearchFormButton}>
+      <span className={styles.SearchFormButtonLabel}>Search</span>
     </button>
 
     <input
-      class="input"
+      className={styles.SearchFormInput}
       type="text"
       autocomplete="off"
       autofocus
