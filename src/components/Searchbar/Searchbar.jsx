@@ -30,7 +30,7 @@
     //     this.props.addContact(contact); 
     //     // this.reset();
     //     resetForm();
-      }
+    //   }
 
       // reset = () => {
       //   this.setState({
@@ -74,3 +74,4 @@
 
      
 // const key = 36683079-f7ca8efdb46bf14669a93b6f2;
+const x = 5;
