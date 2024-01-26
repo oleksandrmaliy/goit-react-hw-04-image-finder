@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Searchbar from "./Searchbar";
-
+import Posts from './Posts';
 
 export class App extends Component {
   
@@ -15,6 +15,7 @@ export class App extends Component {
     <div>
       React homework template
       <Searchbar></Searchbar>
+      <Posts></Posts>
       {/* <ImageGallery>2</ImageGallery>
       <ImageGalleryItem>3</ImageGalleryItem>
       <Loader>4</Loader>
