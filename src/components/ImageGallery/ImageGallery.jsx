@@ -9,7 +9,7 @@ class ImageGallery extends Component {
     }
 render(){
     const smallPics = this.props.imageGallery;
-    console.log(smallPics);
+    // console.log(smallPics);
     const smallPicsSet = smallPics.map(({id, webformatURL, largeImageURL}) => 
         // <li >
         //    <img src={webformatURL} alt="aaa" />
