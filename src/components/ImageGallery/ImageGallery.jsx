@@ -15,7 +15,7 @@ render(){
         //    <img src={webformatURL} alt="aaa" />
         // </li>
         <li key={id} className={styles.ImageGalleryItem}>
-            <img src={webformatURL} alt="Very good photo" className={styles.ImageGalleryItemImage}/>
+            <img src={webformatURL} alt="Very good" className={styles.ImageGalleryItemImage}/>
         </li>);
     return(
     <div>
