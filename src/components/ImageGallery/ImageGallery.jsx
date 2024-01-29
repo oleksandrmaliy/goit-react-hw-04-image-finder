@@ -8,19 +8,19 @@ class ImageGallery extends Component {
 
     }
 render(){
-    const smallPics = this.props.imageGallery;
-    // console.log(smallPics);
-    const smallPicsSet = smallPics.map(({id, webformatURL, largeImageURL}) => 
-        // <li >
-        //    <img src={webformatURL} alt="aaa" />
-        // </li>
-        <li key={id} className={styles.ImageGalleryItem}>
-            <img src={webformatURL} alt="Very good" className={styles.ImageGalleryItemImage}/>
-        </li>);
+    const childrens = this.props.children;
+    // // console.log(smallPics);
+    // const smallPicsSet = smallPics.map(({id, webformatURL, largeImageURL}) => 
+    //     // <li >
+    //     //    <img src={webformatURL} alt="aaa" />
+    //     // </li>
+    //     <li key={id} className={styles.ImageGalleryItem}>
+    //         <img src={webformatURL} alt="Very good" className={styles.ImageGalleryItemImage}/>
+    //     </li>);
     return(
     <div>
         <ul className={styles.ImageGallery}>
-            {smallPicsSet}
+            {childrens}
         </ul>
     </div>
     )

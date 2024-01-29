@@ -5,7 +5,8 @@ import { Hourglass } from 'react-loader-spinner'
 import getAllPics from "./API";
 import Searchbar from "./Searchbar";
 // import Posts from './Posts';
-import ImageGallery from './ImageGallery'
+import ImageGallery from './ImageGallery';
+import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 
 export class App extends Component {
   
@@ -69,8 +70,10 @@ export class App extends Component {
       {/* <Posts></Posts> */}
       {error && <p style={{ color: 'red' } }>{error}</p>}
       {loading && <Hourglass /> }
-      <ImageGallery imageGallery = {images} />
-      {/* <ImageGalleryItem>3</ImageGalleryItem>
+      <ImageGallery>
+        <ImageGalleryItem imageGalleryItems = {images} />
+      </ImageGallery>
+      {/* <ImageGalleryItem imageGallery = {images} />
       <Loader>4</Loader>
       <Button>5</Button>
       <Modal>6</Modal> */}
