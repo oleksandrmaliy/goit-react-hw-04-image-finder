@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 // import axios from 'axios';
-import { Hourglass } from 'react-loader-spinner'
+// import { Hourglass } from 'react-loader-spinner'
 // import imagesRequest from '../components/API/Api';
 import getAllPics from "./API";
 import Searchbar from "./Searchbar";
 // import Posts from './Posts';
 import ImageGallery from './ImageGallery';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
+import Loader from './Loader/Loader';
 
 export class App extends Component {
   
@@ -69,7 +70,7 @@ export class App extends Component {
       <Searchbar></Searchbar>
       {/* <Posts></Posts> */}
       {error && <p style={{ color: 'red' } }>{error}</p>}
-      {loading && <Hourglass /> }
+      {loading && <Loader />}
       <ImageGallery>
         <ImageGalleryItem imageGalleryItems = {images} />
       </ImageGallery>
