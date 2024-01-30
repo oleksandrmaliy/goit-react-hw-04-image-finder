@@ -2,12 +2,14 @@ import React, { Component } from "react";
 // import axios from 'axios';
 // import { Hourglass } from 'react-loader-spinner'
 // import imagesRequest from '../components/API/Api';
-import getAllPics from "./API";
+import getAllPics from "./API/Request";
+import getSearchPics from "./API/RequestSearch";
 import Searchbar from "./Searchbar";
 // import Posts from './Posts';
 import ImageGallery from './ImageGallery';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 import Loader from './Loader/Loader';
+import Button from './Button';
 
 export class App extends Component {
   
@@ -16,12 +18,19 @@ export class App extends Component {
     loading: false,
     error: null,
     search: "",
+    page: 1,
   }
 
   handleSearch = ({search}) => {
     this.setState({
-      search: search,
+      search,
+      images: [],
+      page: 1,
     })
+  }
+
+  loadMore = () => {
+    this.setState(({page}) => ({page: page + 1}))
   }
 
   async componentDidMount(){
@@ -45,7 +54,35 @@ export class App extends Component {
             loading: false,
           })
     }
+  }
 
+  async componentDidUpdate(prevProps, prevState){
+    const {search, page} = this.state;
+
+    if(search && (search !== prevState.search || page !== prevState.page)){
+      this.setState({
+        loading: true,
+      })
+    
+      try {
+        const {data} = await getSearchPics(search, page);
+        this.setState(({images}) => ({
+          images: data.hits?.length ? [...images, ...data.hits] : images,
+        }))
+      }
+      catch(error) {
+        this.setState({
+                error: error.message,
+              })
+      }
+      finally {
+        this.setState({
+              loading: false,
+            })
+      }
+    }
+    
+}
 
     // getAllPics()
     // .then(({data}) => {
@@ -64,14 +101,15 @@ export class App extends Component {
     //     loading: false,
     //   })
     // })
-}
+
 
 
 
   render() {
-    const {handleSearch} = this;
+    const {handleSearch, loadMore} = this;
     // console.log(this.state);
   const {images, loading, error} = this.state;
+  const isImages = Boolean(images.length);
   // console.log({images});
   return (
     <div>
@@ -82,10 +120,8 @@ export class App extends Component {
       <ImageGallery>
         <ImageGalleryItem imageGalleryItems = {images} />
       </ImageGallery>
-      {/* <ImageGalleryItem imageGallery = {images} />
-      <Loader>4</Loader>
-      <Button>5</Button>
-      <Modal>6</Modal> */}
+      {isImages && <Button onClick={loadMore} type='button'>Load more</Button>}
+      {/* <Modal>6</Modal> */}
     </div>
     
   );
