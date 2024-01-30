@@ -15,6 +15,13 @@ export class App extends Component {
     images: [],
     loading: false,
     error: null,
+    search: "",
+  }
+
+  handleSearch = ({search}) => {
+    this.setState({
+      search: search,
+    })
   }
 
   async componentDidMount(){
@@ -62,12 +69,13 @@ export class App extends Component {
 
 
   render() {
+    const {handleSearch} = this;
     // console.log(this.state);
   const {images, loading, error} = this.state;
   // console.log({images});
   return (
     <div>
-      <Searchbar></Searchbar>
+      <Searchbar onSubmit = {handleSearch} />
       {/* <Posts></Posts> */}
       {error && <p style={{ color: 'red' } }>{error}</p>}
       {loading && <Loader />}
