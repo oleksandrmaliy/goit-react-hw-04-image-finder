@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import axios from 'axios';
 // import { Hourglass } from 'react-loader-spinner'
 // import imagesRequest from '../components/API/Api';
-import getAllPics from "./API/Request";
+// import getAllPics from "./API/Request";
 import getSearchPics from "./API/RequestSearch";
 import Searchbar from "./Searchbar";
 // import Posts from './Posts';
@@ -33,28 +33,28 @@ export class App extends Component {
     this.setState(({page}) => ({page: page + 1}))
   }
 
-  async componentDidMount(){
-    this.setState({
-      loading: true,
-    })
+  // async componentDidMount(){
+  //   this.setState({
+  //     loading: true,
+  //   })
 
-    try {
-      const {data} = await getAllPics();
-      this.setState({
-              images: data.hits?.length ? data.hits : [],
-            })
-    }
-    catch(error) {
-      this.setState({
-              error: error.message,
-            })
-    }
-    finally {
-      this.setState({
-            loading: false,
-          })
-    }
-  }
+  //   try {
+  //     const {data} = await getAllPics();
+  //     this.setState({
+  //             images: data.hits?.length ? data.hits : [],
+  //           })
+  //   }
+  //   catch(error) {
+  //     this.setState({
+  //             error: error.message,
+  //           })
+  //   }
+  //   finally {
+  //     this.setState({
+  //           loading: false,
+  //         })
+  //   }
+  // }
 
   async componentDidUpdate(prevProps, prevState){
     const {search, page} = this.state;
