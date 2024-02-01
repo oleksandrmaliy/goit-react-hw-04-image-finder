@@ -1,18 +1,20 @@
 import React, { Component } from "react";
+import { createPortal } from "react-dom";
 
 import styles from "./Modal.module.css";
 
-class Modal extends Component {
-    state={
+const modalRoot = document.getElementById("modal-root");
+console.log(modalRoot);
 
-    }
-    render() {
-        return(
-            <div className={styles.overlay}>
+class Modal extends Component {
+     render() {
+        return createPortal(
+            (<div className={styles.overlay}>
                 <div className={styles.modal}>
-                    <button type="button"><h3>sssssss</h3></button>
+                    <button className={styles.closeButton} type="button"></button>
                 </div>
-            </div>
+            </div>),
+            modalRoot
         )
     }
 }

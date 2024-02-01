@@ -10,7 +10,7 @@ import ImageGallery from './ImageGallery';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 import Loader from './Loader/Loader';
 import Button from './Button';
-import Modal from './Modal'
+// import Modal from './Modal';
 
 export class App extends Component {
   
@@ -20,6 +20,7 @@ export class App extends Component {
     error: null,
     search: "",
     page: 1,
+    imageData: {},
   }
 
   handleSearch = ({search}) => {
@@ -122,7 +123,7 @@ export class App extends Component {
         <ImageGalleryItem imageGalleryItems = {images} />
       </ImageGallery>
       {isImages && <Button onClick={loadMore} type='button'>Load more</Button>}
-      <Modal />
+      {/* <Modal /> */}
     </div>
     
   );
