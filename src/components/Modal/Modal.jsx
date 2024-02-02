@@ -12,27 +12,27 @@ class Modal extends Component {
 
     componentDidMount(){
         document.addEventListener("keydown", this.closeModal);
-        // documentBody.style.overflow = 'hidden';
+        documentBody.style.overflow = 'hidden';
         // documentBody.classList.add('scrollHidden');
-        this.hideBodyOverflow();
+        // this.hideBodyOverflow();
     }
 
     componentWillUnmount(){
         document.removeEventListener("keydown", this.closeModal);
-        // documentBody.style.overflow = null;
+        documentBody.style.overflow = null;
         // documentBody.classList.remove('scrollHidden');
-        this.showBodyOverflow();
+        // this.showBodyOverflow();
     }
 
-    showBodyOverflow = () => {
-        // documentBody.style.overflow = null;
-        documentBody.classList.remove('scrollHidden');
-      };
+    // showBodyOverflow = () => {
+    //     // documentBody.style.overflow = null;
+    //     documentBody.classList.remove('scrollHidden');
+    //   };
       
-    hideBodyOverflow = () => {
-        // documentBody.style.overflow = 'hidden';
-        documentBody.classList.add('scrollHidden');
-      };
+    // hideBodyOverflow = () => {
+    //     // documentBody.style.overflow = 'hidden';
+    //     documentBody.classList.add('scrollHidden');
+    //   };
 
     closeModal = ({target, currentTarget, code}) => {
         if(target === currentTarget || code === "Escape"){
