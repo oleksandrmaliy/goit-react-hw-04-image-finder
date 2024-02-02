@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // import { Hourglass } from 'react-loader-spinner'
 // import imagesRequest from '../components/API/Api';
 // import getAllPics from "./API/Request";
+import styles from './App.module.css'
 import getSearchPics from "./API/RequestSearch";
 import Searchbar from "./Searchbar";
 // import Posts from './Posts';
@@ -21,8 +22,9 @@ export class App extends Component {
     error: null,
     search: "",
     page: 1,
-    imageData: {},
+    imageData: null,
     modalOpen: false,
+    button: false,
   }
 
   handleSearch = ({search}) => {
@@ -42,8 +44,15 @@ export class App extends Component {
         modalOpen: true,
         imageData: largeImageURL,
       })
-    
   }
+
+  closeModal = (e) => {
+    this.setState({
+        modalOpen: false,
+        imageData: null,
+    })
+  }
+
 
   // async componentDidMount(){
   //   this.setState({
@@ -68,8 +77,14 @@ export class App extends Component {
   //   }
   // }
 
-  async componentDidUpdate(prevProps, prevState){
+  async componentDidUpdate(_, prevState){
     const {search, page} = this.state;
+
+    // if(images < 12 || images.length === prevState.images.length){
+    //   this.setState({
+    //     button: true,
+    //   })
+    // }
 
     if(search && (search !== prevState.search || page !== prevState.page)){
       this.setState({
@@ -80,6 +95,7 @@ export class App extends Component {
         const {data} = await getSearchPics(search, page);
         this.setState(({images}) => ({
           images: data.hits?.length ? [...images, ...data.hits] : images,
+          button: (data.hits?.length === 12) ? true : false,
         }))
       }
       catch(error) {
@@ -114,17 +130,17 @@ export class App extends Component {
     //   })
     // })
 
-
+    // const isImages = Boolean(images.length);
 
 
   render() {
-    const {handleSearch, loadMore, showModal} = this;
+    const {handleSearch, loadMore, showModal, closeModal} = this;
     // console.log(this.state);
-  const {images, loading, error, modalOpen, imageData } = this.state;
-  const isImages = Boolean(images.length);
+  const {images, loading, error, modalOpen, imageData, button } = this.state;
+  // const isImages = Boolean(images.length);
   // console.log({images});
   return (
-    <div>
+    <div className={styles.App}>
       <Searchbar onSubmit = {handleSearch} />
       {/* <Posts></Posts> */}
       {error && <p style={{ color: 'red' } }>{error}</p>}
@@ -132,8 +148,8 @@ export class App extends Component {
       <ImageGallery>
         <ImageGalleryItem imageGalleryItems = {images} sModal = {showModal}/>
       </ImageGallery>
-      {isImages && <Button onClick={loadMore} type='button'>Load more</Button>}
-      {modalOpen && <Modal>
+      {button && <Button onClick={loadMore} type='button'>Load more</Button>}
+      {modalOpen && <Modal close={closeModal}>
         <img src={imageData} alt="Big Wiew" />
         </Modal>}
     </div>
