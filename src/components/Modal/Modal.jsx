@@ -8,14 +8,12 @@ console.log(modalRoot);
 const documentBody = document.getElementsByTagName('body')[0];
 console.log(documentBody);
 
-// export const showBodyOverflow = () => {
-//   documentBody.style.overflow = null
-//   documentBody.style.position = null
-// }
-// export const hideBodyOverflow = () => {
-//   documentBody.style.overflow = 'hidden'
-//   documentBody.style.position = 'fixed'
-// }
+const showBodyOverflow = () => {
+  documentBody.style.overflow = null
+}
+const hideBodyOverflow = () => {
+  documentBody.style.overflow = 'hidden'
+}
 
 // scrollHidden
 
@@ -24,13 +22,15 @@ class Modal extends Component {
     componentDidMount(){
     document.addEventListener("keydown", this.closeModal);
     // documentBody.style.overflow = 'hidden';
-    documentBody.classList.add('scrollHidden');
+    // documentBody.classList.add('scrollHidden');
+    hideBodyOverflow();
     }
 
     componentWillUnmount(){
         document.removeEventListener("keydown", this.closeModal);
         // documentBody.style.overflow = null;
-        documentBody.classList.remove('scrollHidden');
+        // documentBody.classList.remove('scrollHidden');
+        showBodyOverflow();
     }
 
     closeModal = ({target, currentTarget, code}) => {
