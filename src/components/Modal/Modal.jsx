@@ -17,16 +17,20 @@ console.log(documentBody);
 //   documentBody.style.position = 'fixed'
 // }
 
+// scrollHidden
+
 class Modal extends Component {
 
     componentDidMount(){
     document.addEventListener("keydown", this.closeModal);
-    documentBody.style.overflow = 'hidden';
+    // documentBody.style.overflow = 'hidden';
+    documentBody.classList.add('scrollHidden');
     }
 
     componentWillUnmount(){
         document.removeEventListener("keydown", this.closeModal);
-        documentBody.style.overflow = null;
+        // documentBody.style.overflow = null;
+        documentBody.classList.remove('scrollHidden');
     }
 
     closeModal = ({target, currentTarget, code}) => {

@@ -9,6 +9,10 @@ body {
   /* overflow-y: hidden; */
 }
 
+.scrollHidden{
+  overflow: hidden;
+}
+
 img {
   display: block;
   max-width: 100%;
