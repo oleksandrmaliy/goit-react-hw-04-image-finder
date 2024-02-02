@@ -8,30 +8,29 @@ console.log(modalRoot);
 const documentBody = document.getElementsByTagName('body')[0];
 console.log(documentBody);
 
-const showBodyOverflow = () => {
-  documentBody.style.overflow = null
-}
-const hideBodyOverflow = () => {
-  documentBody.style.overflow = 'hidden'
-}
-
-// scrollHidden
-
 class Modal extends Component {
 
     componentDidMount(){
-    document.addEventListener("keydown", this.closeModal);
-    // documentBody.style.overflow = 'hidden';
-    // documentBody.classList.add('scrollHidden');
-    hideBodyOverflow();
+        document.addEventListener("keydown", this.closeModal);
+        // documentBody.style.overflow = 'hidden';
+        // documentBody.classList.add('scrollHidden');
+        this.hideBodyOverflow();
     }
 
     componentWillUnmount(){
         document.removeEventListener("keydown", this.closeModal);
         // documentBody.style.overflow = null;
         // documentBody.classList.remove('scrollHidden');
-        showBodyOverflow();
+        this.showBodyOverflow();
     }
+
+    showBodyOverflow = () => {
+        documentBody.style.overflow = null;
+      };
+      
+    hideBodyOverflow = () => {
+        documentBody.style.overflow = 'hidden';
+      };
 
     closeModal = ({target, currentTarget, code}) => {
         if(target === currentTarget || code === "Escape"){
