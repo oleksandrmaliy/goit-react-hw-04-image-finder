@@ -25,11 +25,13 @@ class Modal extends Component {
     }
 
     showBodyOverflow = () => {
-        documentBody.style.overflow = null;
+        // documentBody.style.overflow = null;
+        documentBody.classList.remove('scrollHidden');
       };
       
     hideBodyOverflow = () => {
-        documentBody.style.overflow = 'hidden';
+        // documentBody.style.overflow = 'hidden';
+        documentBody.classList.add('scrollHidden');
       };
 
     closeModal = ({target, currentTarget, code}) => {
