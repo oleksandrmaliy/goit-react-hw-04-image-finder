@@ -8,9 +8,11 @@ console.log(modalRoot);
 
 class Modal extends Component {
      render() {
+        const {children} = this.props;
         return createPortal(
             (<div className={styles.overlay}>
                 <div className={styles.modal}>
+                    {children}
                     <button className={styles.closeButton} type="button"></button>
                 </div>
             </div>),

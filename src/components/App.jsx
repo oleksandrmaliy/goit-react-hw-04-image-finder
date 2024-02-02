@@ -10,6 +10,7 @@ import ImageGallery from './ImageGallery';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 import Loader from './Loader/Loader';
 import Button from './Button';
+import Modal from "./Modal/Modal";
 // import Modal from './Modal';
 
 export class App extends Component {
@@ -21,6 +22,7 @@ export class App extends Component {
     search: "",
     page: 1,
     imageData: {},
+    modalOpen: false,
   }
 
   handleSearch = ({search}) => {
@@ -33,6 +35,14 @@ export class App extends Component {
 
   loadMore = () => {
     this.setState(({page}) => ({page: page + 1}))
+  }
+
+  showModal = ({largeImageURL}) => {
+    this.setState({
+        modalOpen: true,
+        imageData: largeImageURL,
+      })
+    
   }
 
   // async componentDidMount(){
@@ -108,9 +118,9 @@ export class App extends Component {
 
 
   render() {
-    const {handleSearch, loadMore} = this;
+    const {handleSearch, loadMore, showModal} = this;
     // console.log(this.state);
-  const {images, loading, error} = this.state;
+  const {images, loading, error, modalOpen, imageData } = this.state;
   const isImages = Boolean(images.length);
   // console.log({images});
   return (
@@ -120,10 +130,12 @@ export class App extends Component {
       {error && <p style={{ color: 'red' } }>{error}</p>}
       {loading && <Loader />}
       <ImageGallery>
-        <ImageGalleryItem imageGalleryItems = {images} />
+        <ImageGalleryItem imageGalleryItems = {images} sModal = {showModal}/>
       </ImageGallery>
       {isImages && <Button onClick={loadMore} type='button'>Load more</Button>}
-      {/* <Modal /> */}
+      {modalOpen && <Modal>
+        <img src={imageData} alt="Big Wiew" />
+        </Modal>}
     </div>
     
   );

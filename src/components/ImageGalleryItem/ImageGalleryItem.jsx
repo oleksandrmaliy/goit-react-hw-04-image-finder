@@ -8,11 +8,12 @@ class ImageGalleryItem extends Component {
 
     }
 render(){
-    const smallPics = this.props.imageGalleryItems;
+    const {imageGalleryItems, sModal} = this.props;
+    // const {sModal} = this.props;
     // console.log(smallPics);
-    const smallPicsSet = smallPics.map(({id, webformatURL, largeImageURL}) => 
-        <li key={id} className={styles.ImageGalleryItem}>
-            <img src={webformatURL} alt="Very good" className={styles.ImageGalleryItemImage}/>
+    const smallPicsSet = imageGalleryItems.map(({id, webformatURL, largeImageURL}) => 
+        <li key={id} onClick={() => sModal({largeImageURL})} className={styles.ImageGalleryItem}>
+            <img src={webformatURL} alt="Ooops, no data" className={styles.ImageGalleryItemImage}/>
         </li>);
         console.log(smallPicsSet);
     return(
