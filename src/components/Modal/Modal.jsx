@@ -5,21 +5,21 @@ import styles from "./Modal.module.css";
 
 const modalRoot = document.getElementById("modal-root");
 console.log(modalRoot);
-const documentBody = document.getElementsByTagName('body')[0];
-console.log(documentBody);
+const documentHTML = document.getElementsByTagName('HTML')[0];
+console.log(documentHTML);
 
 class Modal extends Component {
 
     componentDidMount(){
         document.addEventListener("keydown", this.closeModal);
-        documentBody.style.overflow = 'hidden';
+        documentHTML.style.overflow = 'hidden';
         // documentBody.classList.add('scrollHidden');
         // this.hideBodyOverflow();
     }
 
     componentWillUnmount(){
         document.removeEventListener("keydown", this.closeModal);
-        documentBody.style.overflow = null;
+        documentHTML.style.overflow = null;
         // documentBody.classList.remove('scrollHidden');
         // this.showBodyOverflow();
     }
