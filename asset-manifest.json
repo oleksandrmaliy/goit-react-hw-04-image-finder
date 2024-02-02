@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-03-image-finder/static/css/main.a9296f85.css",
-    "main.js": "/goit-react-hw-03-image-finder/static/js/main.4bc6e926.js",
+    "main.css": "/goit-react-hw-03-image-finder/static/css/main.f4c15b10.css",
+    "main.js": "/goit-react-hw-03-image-finder/static/js/main.9bdf2b33.js",
     "index.html": "/goit-react-hw-03-image-finder/index.html",
     "static/media/magnifying-glass.svg": "/goit-react-hw-03-image-finder/static/media/magnifying-glass.8163cdcf2b5fee84878a.svg",
     "static/media/cross-close-svgrepo-com.svg": "/goit-react-hw-03-image-finder/static/media/cross-close-svgrepo-com.6ca77b8e568730b51f90.svg",
-    "main.a9296f85.css.map": "/goit-react-hw-03-image-finder/static/css/main.a9296f85.css.map",
-    "main.4bc6e926.js.map": "/goit-react-hw-03-image-finder/static/js/main.4bc6e926.js.map"
+    "main.f4c15b10.css.map": "/goit-react-hw-03-image-finder/static/css/main.f4c15b10.css.map",
+    "main.9bdf2b33.js.map": "/goit-react-hw-03-image-finder/static/js/main.9bdf2b33.js.map"
   },
   "entrypoints": [
-    "static/css/main.a9296f85.css",
-    "static/js/main.4bc6e926.js"
+    "static/css/main.f4c15b10.css",
+    "static/js/main.9bdf2b33.js"
   ]
 }
