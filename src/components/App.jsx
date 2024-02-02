@@ -11,7 +11,7 @@ import ImageGallery from './ImageGallery';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 import Loader from './Loader/Loader';
 import Button from './Button';
-import Modal from "./Modal/Modal";
+import Modal from "./Modal";
 // import Modal from './Modal';
 
 export class App extends Component {
