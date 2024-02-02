@@ -1,22 +1,8 @@
-
-// import { Hourglass } from 'react-loader-spinner';
-
-// const loader = () => {
-    
-//     return (
-//                 <Hourglass />
-       
-//         )
-// }
-
-// export default loader;
-
 import { RotatingLines } from 'react-loader-spinner';
-// import { Wrapper } from '../ImageGallery/ImageGallery.styled';
+
 import styles from "./Loader.module.css";
 
-
-function Loader() {
+const Loader = () => {
   return (
     <div className={styles.wrapper}>
         <RotatingLines

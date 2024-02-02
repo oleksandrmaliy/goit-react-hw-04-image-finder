@@ -4,35 +4,18 @@ import { createPortal } from "react-dom";
 import styles from "./Modal.module.css";
 
 const modalRoot = document.getElementById("modal-root");
-console.log(modalRoot);
 const documentHTML = document.getElementsByTagName('HTML')[0];
-console.log(documentHTML);
-
 class Modal extends Component {
 
     componentDidMount(){
         document.addEventListener("keydown", this.closeModal);
         documentHTML.style.overflow = 'hidden';
-        // documentBody.classList.add('scrollHidden');
-        // this.hideBodyOverflow();
     }
 
     componentWillUnmount(){
         document.removeEventListener("keydown", this.closeModal);
         documentHTML.style.overflow = null;
-        // documentBody.classList.remove('scrollHidden');
-        // this.showBodyOverflow();
     }
-
-    // showBodyOverflow = () => {
-    //     // documentBody.style.overflow = null;
-    //     documentBody.classList.remove('scrollHidden');
-    //   };
-      
-    // hideBodyOverflow = () => {
-    //     // documentBody.style.overflow = 'hidden';
-    //     documentBody.classList.add('scrollHidden');
-    //   };
 
     closeModal = ({target, currentTarget, code}) => {
         if(target === currentTarget || code === "Escape"){
