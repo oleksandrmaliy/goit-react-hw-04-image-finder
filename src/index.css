@@ -23,10 +23,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* .scrollHidden{
-  overflow: hidden;
-} */
-
 img {
   display: block;
   max-width: 100%;
