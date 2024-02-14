@@ -5,6 +5,7 @@ import styles from "./Modal.module.css";
 
 const modalRoot = document.getElementById("modal-root");
 const documentHTML = document.getElementsByTagName('HTML')[0];
+
 class Modal extends Component {
 
     componentDidMount(){
