@@ -1,29 +1,32 @@
-import React, {Component} from "react";
+import React, {useState} from "react";
 
 import styles from "./Searchbar.module.css";
-class Searchbar extends Component {
-    state = {
-        search: "",
-    }
 
-    handleChange = ({target}) => {
-      const {name, value} = target;
-      this.setState({
-        [name]: value,
-      })
+const Searchbar = (props) => {
+
+  const [search, setSearch] = useState('');
+
+    const handleChange = ({target}) => {
+      // const {name, value} = target;
+      setSearch(target.value);
+      // this.setState({
+      //   [name]: value,
+      // })
     };
 
-    handleSubmit = (event) => {
+    const handleSubmit = (event) => {
       event.preventDefault();
-      this.props.onSubmit({...this.state});
-      this.setState({
-          search: "",
-        })
+      props.onSubmit(search);
+      console.log(search);
+      setSearch('');
+      // this.setState({
+      //     search: "",
+      //   })
     };
 
-    render(){
-      const { handleChange, handleSubmit } = this;
-      const { search } = this.state;
+    // render(){
+    //   const { handleChange, handleSubmit } = this;
+    //   const { search } = this.state;
 
     return (
     <header className={styles.Searchbar}>
@@ -45,6 +48,6 @@ class Searchbar extends Component {
         />
       </form>
     </header>
-   )}}
+   )}
    
 export default Searchbar;

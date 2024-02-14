@@ -5,7 +5,10 @@ const instance = axios.create({
 })
 
 const getSearchPics = (search, page) => {
+    // const {search, page} = props;
+    console.log('search;',search, page);
     return instance.get(`/&q=${search}&page=${page}`)
+
 }
 
 export default getSearchPics;
