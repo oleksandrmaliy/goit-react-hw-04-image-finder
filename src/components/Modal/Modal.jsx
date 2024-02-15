@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 
 import styles from "./Modal.module.css";
@@ -6,27 +6,42 @@ import styles from "./Modal.module.css";
 const modalRoot = document.getElementById("modal-root");
 const documentHTML = document.getElementsByTagName('HTML')[0];
 
-class Modal extends Component {
+const Modal = (props) => {
 
-    componentDidMount(){
-        document.addEventListener("keydown", this.closeModal);
+    const {children, close} = props;
+
+    useEffect(() => {
+        document.addEventListener("keydown", closeModal);
         documentHTML.style.overflow = 'hidden';
-    }
 
-    componentWillUnmount(){
-        document.removeEventListener("keydown", this.closeModal);
-        documentHTML.style.overflow = null;
-    }
+        return () => {
+            document.removeEventListener("keydown", closeModal);
+            documentHTML.style.overflow = null;
+        } 
+    }, []);
 
-    closeModal = ({target, currentTarget, code}) => {
+    // componentDidMount(){
+    //     document.addEventListener("keydown", closeModal);
+    //     documentHTML.style.overflow = 'hidden';
+    // }
+
+    // useEffect(() => {
+    //     document.removeEventListener("keydown", closeModal);
+    //     documentHTML.style.overflow = null;
+    // }, [])
+
+    // componentWillUnmount(){
+    //     document.removeEventListener("keydown", closeModal);
+    //     documentHTML.style.overflow = null;
+    // }
+
+    const closeModal = ({target, currentTarget, code}) => {
         if(target === currentTarget || code === "Escape"){
-            this.props.close()
+            props.close()
         }
     }
     
-     render() {
-        const {closeModal} = this;
-        const {children, close} = this.props;
+    // const {children, close} = props;
         return createPortal(
             (<div onClick={closeModal} className={styles.overlay}>
                 <div className={styles.modal}>
@@ -36,7 +51,6 @@ class Modal extends Component {
             </div>),
             modalRoot
         )
-    }
 }
 
 export default Modal;

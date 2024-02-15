@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import styles from './App.module.css'
 
@@ -45,7 +45,7 @@ const App = () => {
   }
 
   const loadMore = () => {
-    setPage(page + 1);
+    setPage(prevPage => prevPage + 1);
 
     // this.setState(({page}) => ({page: page + 1}))
   }
@@ -69,13 +69,11 @@ const App = () => {
     //     imageData: null,
     // })
   }
-
-  useEffect(() => {
     
-
+  useEffect(() => {
+   
     const fetchImages = async () => {
       try {
-        // setButton(false);
         setLoading(true);
         const {data} = await getSearchPics(search, page);
         setImages(data.hits?.length ? [...images, ...data.hits] : images);
@@ -88,31 +86,12 @@ const App = () => {
         setLoading(false);
       }
     }
-     
-      // // setButton(false);
-
-      // const getSearchPics = (search, page) = {
-      //   .then({data}) => {
-      //     setImages(data.hits?.length ? [...images, ...data.hits] : images),
-      //     setButton(data.hits?.length === 12 ? true : false),
-      //   }
-      //   .catch(error => {
-      //     setError(error.message),
-      // })
-      //   .finally(() => {
-      //     setLoading(false);
-      //   })
-      // }
-
+     if(search){
       fetchImages();
+     }
+  }, [search, page]);
 
-      
-    }, [search, page]);
-
-
-
-
-  //   }
+    //   }
   // }
 
   // componentDidUpdate(_, prevState){
