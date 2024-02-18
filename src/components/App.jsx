@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import styles from './App.module.css'
 
@@ -21,53 +21,24 @@ const App = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [button, setButton] = useState(false);
   
-  // state = {
-  //   images: [],
-  //   loading: false,
-  //   error: null,
-  //   search: "",
-  //   page: 1,
-  //   imageData: null,
-  //   modalOpen: false,
-  //   button: false,
-  // }
-
   const handleSearch = (search) => {
     setSearch(search);
     setImages([]);
     setPage(1);
-
-    // this.setState({
-    //   search,
-    //   images: [],
-    //   page: 1,
-    // })
   }
 
   const loadMore = () => {
     setPage(prevPage => prevPage + 1);
-
-    // this.setState(({page}) => ({page: page + 1}))
   }
 
   const showModal = ({largeImageURL}) => {
     setModalOpen(true);
     setImageData(largeImageURL);
-
-    // this.setState({
-    //     modalOpen: true,
-    //     imageData: largeImageURL,
-    //   })
   }
 
   const closeModal = () => {
       setModalOpen(false);
       setImageData(null);
-
-    // this.setState({
-    //     modalOpen: false,
-    //     imageData: null,
-    // })
   }
     
   useEffect(() => {
@@ -91,52 +62,19 @@ const App = () => {
      }
   }, [search, page]);
 
-    //   }
-  // }
-
-  // componentDidUpdate(_, prevState){
-  //   const {search, page, images} = this.state;
-
-  //   if(search && (search !== prevState.search || page !== prevState.page)){
-  //     this.setState({
-  //       loading: true,
-  //       button: false,
-  //     })
-
-  //   getSearchPics(search, page)
-  //     .then(({data}) => {
-  //       this.setState({
-  //         images: data.hits?.length ? [...images, ...data.hits] : images,
-  //         button: (data.hits?.length === 12) ? true : false,
-  //       })
-  //     })
-  //     .catch(error => {
-  //       this.setState({
-  //         error: error.message,
-  //       })
-  //   })
-  //     .finally(()=>{
-  //       this.setState({
-  //         loading: false,
-  //     })
-  //   })
-  // }};
-
-  // render() {
-  //   const {handleSearch, loadMore, showModal, closeModal} = this;
-  //   const {images, loading, error, modalOpen, imageData, button } = this.state;
- 
   return (
     <div className={styles.App}>
       <Searchbar onSubmit = {handleSearch} />
-      {error && <p style={{ color: 'red' } }>{error}</p>}
+      {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
       {loading && <Loader />}
+      {!loading & !images.length ? 
+      <p style={{ color: 'red', textAlign: 'center' }}>No photo to show</p> : 
       <ImageGallery>
         <ImageGalleryItem imageGalleryItems = {images} sModal = {showModal}/>
-      </ImageGallery>
+      </ImageGallery>}
       {button && <Button onClick={loadMore} type='button'>Load more</Button>}
       {modalOpen && <Modal close={closeModal}>
-        <img src={imageData} alt="Big Wiew" />
+        <img src={imageData} alt="Big view" />
         </Modal>}
     </div>
   );

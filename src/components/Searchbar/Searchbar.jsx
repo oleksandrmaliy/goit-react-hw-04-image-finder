@@ -7,11 +7,7 @@ const Searchbar = (props) => {
   const [search, setSearch] = useState('');
 
     const handleChange = ({target}) => {
-      // const {name, value} = target;
       setSearch(target.value);
-      // this.setState({
-      //   [name]: value,
-      // })
     };
 
     const handleSubmit = (event) => {
@@ -19,14 +15,7 @@ const Searchbar = (props) => {
       props.onSubmit(search);
       console.log(search);
       setSearch('');
-      // this.setState({
-      //     search: "",
-      //   })
     };
-
-    // render(){
-    //   const { handleChange, handleSubmit } = this;
-    //   const { search } = this.state;
 
     return (
     <header className={styles.Searchbar}>
