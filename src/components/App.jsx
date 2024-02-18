@@ -67,11 +67,11 @@ const App = () => {
       <Searchbar onSubmit = {handleSearch} />
       {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
       {loading && <Loader />}
-      {!loading & !images.length ? 
-      <p style={{ color: 'red', textAlign: 'center' }}>No photo to show</p> : 
-      <ImageGallery>
+      {(!loading & !images.length) ? 
+      (<p style={{ color: 'red', textAlign: 'center' }}>No photo to show</p>) : 
+      (<ImageGallery>
         <ImageGalleryItem imageGalleryItems = {images} sModal = {showModal}/>
-      </ImageGallery>}
+      </ImageGallery>)}
       {button && <Button onClick={loadMore} type='button'>Load more</Button>}
       {modalOpen && <Modal close={closeModal}>
         <img src={imageData} alt="Big view" />
